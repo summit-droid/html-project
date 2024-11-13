@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles/index.css" type="text/css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(image/mt9.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+        .login-container {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #1a1212;
+            border-radius: 10px;
+            background-color: #d20b0b;
+            position: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container" style="background-color: #7a0707;">
+        
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <div class="error-message" id="loginError">Invalid email or password.</div><br>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const enteredPassword = document.getElementById('password').value;
+            const registeredPassword = localStorage.getItem('registeredPassword');
+            const loginError = document.getElementById('loginError');
+
+            // Check if the entered password matches the registered password
+            if (enteredPassword === registeredPassword) {
+                // Redirect to the dashboard after successful login
+                window.location.href = 'dashboard.html';
+            } else {
+                // Show error message if the password does not match
+                loginError.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

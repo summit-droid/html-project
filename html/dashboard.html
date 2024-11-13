@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Dashboard.css" type="text/css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(C:\Users\Admin\Pictures\wallpaper\107740585_226165.jpg);
+        }
+        .dashboard-container {
+            width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            background-color: #180a0a;
+        }
+        h2 {
+            text-align: center;
+            background-color:  #5f5959;
+        }
+        .button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            background-color:  #35424a;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .form-container {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+            background-color: #5f5959;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function toggleForm(formId) {
+            var form = document.getElementById(formId);
+            if (form.style.display === "none") {
+                form.style.display = "block";
+            } else {
+                form.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <h2>Dashboard</h2>
+        <a href="order.html" class="button">Book with us now</a>
+        <a href="#" class="button" onclick="toggleForm('changePasswordForm')">Change Password</a>
+        <a href="#" class="button" onclick="toggleForm('logoutForm')">Logout</a>
+
+        <div id="changePasswordForm" class="form-container">
+            <h3>Change Password</h3>
+            <form action="change_password.php" method="POST">
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" name="currentPassword" required><br><br>
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required><br><br>
+                <input type="submit" value="Change Password">
+            </form>
+        </div>
+
+        <div id="logoutForm" class="form-container">
+            <h3>Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <form action="logout.php" method="POST">
+                <input type="submit" value="Logout">
+            </form>
+            
+        </div>
+    </div>
+
+</body>
+</html>

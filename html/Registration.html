@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles/index.css" type="text/css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(image/mt9_3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .form-container {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            
+            border-radius: 30px;
+            background-color: none;
+
+            color: red;
+            position: center;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container" style="background-color: #f2f2f2;">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required><br><br>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required><br><br>
+
+            <label for="email_address">Email Address:</label>
+            <input type="email" id="email_address" name="email_address" required><br><br>
+
+            <label for="contact">Contact:</label>
+            <input type="tel" id="contact" name="contact" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const firstName = document.getElementById('first_name').value;
+            const lastName = document.getElementById('last_name').value;
+            const password = document.getElementById('password').value;
+
+            // Store the password in localStorage (for demonstration purposes only)
+            localStorage.setItem('registeredPassword', password);
+
+            alert(`Hello ${firstName} ${lastName}, welcome to my site, thank you for signing up. You can now log in.`);
+            
+            // Redirect to the login page after registration
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

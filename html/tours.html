@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours - Summit Tour Guide</title>
+    <link rel="stylesheet" href="styles/tours.css" type="text/css"/>
+    <style>
+        
+        body{
+            background-image: url(image/434319832_188541.jpg);
+            background-size: cover;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.8);
+            padding-top: 60px;
+        }
+        .modal-content {
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .gallery-images img {
+            margin: 5px;
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Explore Our Tours</h1>
+        <nav>
+            <a href="INDEX.HTML">Home</a>
+            <a href="about.html">About</a>
+            <a href="tours.html">Tours</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="tour-list">
+            
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Summit Guide Website
+    </footer>
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <div class="gallery-images" id="gallery-images"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tours = [
+                { name: 'Beautiful Mountain', image: 'image/mt1.jpg', additionalImages: ['image/mt1_1.jpg', 'image/mt1_2.jpg','image/mt1_3.jpg','image/mt1_4.jpg','image/mt1_5.jpg','image/mt1_6.jpg'] },
+                { name: 'Serene Beach', image: 'image/mt3.jpg', additionalImages: ['image/3_1.jpg', 'image/3_2.jpg','image/3_3.jpg','image/3_4.jpg','image/3_5.jpg','image/3_6.jpg','image/3_7.jpg'] },
+                { name: 'Historic City', image: 'image/mt4.jpg', additionalImages: ['image/mt4_1.jpg', 'image/mt4_2.jpg'] },
+                { name: 'Lakes', image: 'image/mt5.jpg', additionalImages: ['image/mt5_1.jpg', 'image/mt5_2.jpg'] },
+                { name: 'Wild Life', image: 'image/mt6.jpg', additionalImages: ['image/mt6_1.jpg', 'image/mt6_2.jpg'] },
+                { name: 'Tropical Landscapes', image: 'image/mt7.jpg', additionalImages: ['image/mt7_1.jpg', 'image/mt7_2.jpg'] }
+            ];
+
+            const tourList = document.querySelector('.tour-list');
+            tourList.innerHTML = '';
+
+            tours.forEach(tour => {
+                const tourItem = document.createElement('div');
+                tourItem.className = 'tour-item';
+
+                const img = document.createElement('img');
+                img.src = tour.image;
+                img.alt = tour.name;
+                img.style.cursor = 'pointer';
+                img.onclick = () => openModal(tour.additionalImages);
+                
+                const h3 = document.createElement('h3');
+                h3.textContent = tour.name;
+
+                tourItem.appendChild(img);
+                tourItem.appendChild(h3);
+                tourList.appendChild(tourItem);
+            });
+        });
+
+        function openModal(images) {
+            const modal = document.getElementById("myModal");
+            const galleryImages = document.getElementById("gallery-images");
+            galleryImages.innerHTML = ''; // Clear existing images
+
+            images.forEach(imageSrc => {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                galleryImages.appendChild(img);
+            });
+
+            modal.style.display = "block";
+        }
+
+        const closeModal = document.getElementsByClassName("close")[0];
+        closeModal.onclick = function() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Example</title>
+</head>
+<body>
+<h1>Computer Science Class</h1>
+<button onclick="displayGreeting()">Click me</button>
+<p id="greeting"></p>
+
+<button onclick="changecolor()">Click me</button>
+<p id="colorbutton"></p>
+
+<script>
+function displayGreeting() {
+  document.getElementById("greeting").innerText = "Hello, welcome to JavaScript!";
+}
+</script>
+
+<script>
+  function changecolor() {
+    document.getElementById("colorbutton").style.backgroundColor="red";
+  }
+  </script>
+
+</body>
+</html>
+

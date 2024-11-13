@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <link rel="stylesheet" href="styles/booking.css" type="text/css"/> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(image/mt9_4.jpg);
+            
+        }
+        .booking-container {
+            width: 500px;
+            margin: auto;
+            padding: 30px;
+            border: none;
+            
+            background-color: none;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="datetime-local"],
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .price-display {
+            margin: 15px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        .print-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="booking-container">
+        <h2>Booking Form</h2>
+        <form id="bookingForm">
+            <label for="visitor">Who are you visiting?</label>
+            <input type="text" id="visitor" name="visitor" required>
+
+            <label for="features">Categories of Features:</label>
+            <select id="features" name="features" required>
+                <option value="">Select...</option>
+                <option value="beautiful beaches">Beautiful Beaches</option>
+                <option value="historical sites">Historical Sites</option>
+                <option value="mountains">Mountains</option>
+                <option value="wildlife">Wildlife</option>
+                <option value=" full tour"> full tour</option>
+                <option value="beautiful beaches/historical sites">beautiful beaches/historical sites</option>
+                <option value="historical sites/wildlife"> historical sites/wildlife</option>
+                <option value="beautiful beaches/wildlife"> beautiful beaches/wildlife</option>
+                <option value= "mountains/beautiful beaches">  mountains/beautiful beaches</option>
+                <option value="mountains/historical sites"> mountains/historical sites</option>
+            </select>
+
+            <label for="datetime">Date and Time:</label>
+            <input type="datetime-local" id="datetime" name="datetime" required>
+
+            <label for="people">How many people are you booking for?</label>
+            <input type="number" id="people" name="people" min="1" required>
+
+            <div class="price-display" id="priceDisplay">Total Price: $0</div>
+
+            <input type="submit" value="Book Now">
+        </form>
+
+        <button class="print-button" id="printButton">Print Booking Details</button>
+    </div>
+
+    <script>
+        const featurePrices = {
+            "beautiful beaches": 500,
+            "historical sites": 400,
+            "mountains": 600,
+            "wildlife": 40,
+            "full tour":1500,
+            "beautiful beaches/historical sites":900,
+            "historical sites/wildlife":800,
+            "beautiful beaches/wildlife":700,
+             "mountains/beautiful beaches":1100,
+             "mountains/historical sites":10000
+
+        };
+
+        function updatePrice() {
+            const featuresSelect = document.getElementById('features');
+            const peopleCount = document.getElementById('people').value;
+            const priceDisplay = document.getElementById('priceDisplay');
+
+            const pricePerPerson = featurePrices[featuresSelect.value] || 0;
+            const totalPrice = pricePerPerson * peopleCount;
+
+            priceDisplay.textContent =  ("Total " +"$$" +totalPrice);
+        }
+
+        document.getElementById('features').addEventListener('change', updatePrice);
+        document.getElementById('people').addEventListener('input', updatePrice);
+
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const visitor = document.getElementById('visitor').value;
+            const features = document.getElementById('features').value;
+            const datetime = document.getElementById('datetime').value;
+            const people = document.getElementById('people').value;
+            const totalPrice = document.getElementById('priceDisplay').textContent;
+
+            const bookingDetails = `
+                Booking Details:
+                Visitor: ${visitor}
+                Features: ${features}
+                Date and Time: ${datetime}
+                Number of People: ${people}
+                ${totalPrice}
+            `;
+            
+            alert(bookingDetails);
+        });
+
+        document.getElementById('printButton').addEventListener('click', function() {
+            const visitor = document.getElementById('visitor').value;
+            const features = document.getElementById('features').value;
+            const datetime = document.getElementById('datetime').value;
+            const people = document.getElementById('people').value;
+            const totalPrice = document.getElementById('priceDisplay').textContent;
+
+            const printContent = `
+                <h2>Booking Details</h2>
+                <p>Visitor: ${visitor}</p>
+                <p>Features: ${features}</p>
+                <p>Date and Time: ${datetime}</p>
+                <p>Number of People: ${people}</p>
+                <p>${totalPrice}</p>
+            `;
+
+            const printWindow = window.open('', '', 'height=600,width=400');
+            printWindow.document.write('<html><head><title>Print Booking Details</title>');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(printContent);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        });
+    </script>
+</body>
+</html>
