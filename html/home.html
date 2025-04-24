@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreNow - Your Journey Starts Here</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #383a39;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("image/kenya.jpg") center/cover no-repeat; /* Replace with a captivating image */
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .auth-nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-link {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .register-link {
+            background-color: #007bff;
+        }
+
+        .login-link {
+            background-color: #28a745;
+        }
+
+        .auth-link:hover {
+            opacity: 0.8;
+        }
+
+        .featured-destinations {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: lab(90.94% 0 -0.01);
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .destination-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .destination-card:hover {
+            transform: scale(1.05);
+        }
+
+        .destination-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destination-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .destination-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .destination-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .cta-section {
+            background: linear-gradient(90deg, #007bff, #6610f2);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: white;
+            background-color: #28a745;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #1e7e34;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #f4f4f4;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="auth-nav">
+            <a href="login.php" class="auth-link login-link">Log In</a>
+            <a href="Registration.php" class="auth-link register-link">Register</a>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Explore the Beauty of Our World</h1>
+            <p class="hero-subtitle">Discover breathtaking destinations and plan your dream vacation.</p>
+            </div>
+    </div>
+
+    <section class="featured-destinations">
+        <h2>Featured Destinations</h2>
+        <div class="destinations-grid">
+            <div class="destination-card">
+                <img src="image/bitch.jpg" alt="Tropical Beach" class="destination-image">
+                <div class="destination-info">
+                    <h3 class="destination-title">Tropical Paradise</h3>
+                    <p class="destination-description">Relax on pristine beaches and soak up the sun in this idyllic getaway.</p>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="image/mount.jpg" alt="Mountain Range" class="destination-image">
+                <div class="destination-info">
+                    <h3 class="destination-title">Majestic Mountains</h3>
+                    <p class="destination-description">Embark on an adventure through towering peaks and stunning landscapes.</p>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="image/safrica.jpg" alt="Ancient City" class="destination-image">
+                <div class="destination-info">
+                    <h3 class="destination-title">Historical Wonders</h3>
+                    <p class="destination-description">Step back in time and explore the rich history of ancient civilizations.</p>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="image/wild.jpg" alt="Safari Adventure" class="destination-image">
+                <div class="destination-info">
+                    <h3 class="destination-title">Wildlife Safari</h3>
+                    <p class="destination-description">Witness incredible wildlife in their natural habitat on an unforgettable safari.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 class="cta-title">Ready to Start Your Adventure?</h2>
+        <a href="#" class="cta-button">Explore Our Tours</a>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 ExploreNow. All rights reserved.</p>
+    </footer>
+</body>
+</html>
